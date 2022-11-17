@@ -1,0 +1,30 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "latestw_all" ]
+  pull_request:
+    branches: [ "latestw_all" ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup VS2019
+      uses: richardo2016/Setup-MSBuild@releases/clangcl_x_2017/v1
+    - name: Setup Windows 10 SDK Action
+      uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.9
+      with:
+        # SDK 5-digit version to install (e.g 17763, 18362, 19041)
+        sdk-version: 17763
+    - name: Build
+      run: |
+        ipmo .\contrib\win32\openssh\OpenSSHBuildHelper.psm1 -Force
+        Start-OpenSSHBuild -Configuration Release -NativeHostArch x64
+
