@@ -12,14 +12,21 @@ on:
 jobs:
   build:
 
-    runs-on: windows-2019
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v3
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v3.5.1
-    - name: Setup VS2019
-      uses: richardo2016/Setup-MSBuild@releases/clangcl_x_2017/v1
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v1.1.3
+      with:
+        # Folder location of where vswhere.exe is located if a self-hosted agent
+        # vswhere-path: # optional
+        # Version of Visual Studio to search; defaults to latest if not specified
+        # vs-version: # optional
+        # Enable searching for pre-release versions of Visual Studio/MSBuild
+        # vs-prerelease: # optional
+        # The preferred processor architecture of MSBuild. Can be either "x86" or "x64". "x64" is only available from Visual Studio version 17.0 and later.
+        msbuild-architecture: x64 # optional, default is x86
     - name: Setup Windows 10 SDK Action
       uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.9
       with:
