@@ -24,6 +24,8 @@
     <ZLib-x64-Path>$(SolutionDir)\ZLib\bin\x64\</ZLib-x64-Path>
     <ZLib-arm64-Path>$(SolutionDir)\ZLib\bin\arm64\</ZLib-arm64-Path>
     <ZLib-arm-Path>$(SolutionDir)\ZLib\bin\arm\</ZLib-arm-Path>
+    <libedit-Path>$(SolutionDir)\wineditline-2.206\src\</libedit-Path>
+    <libedit-x64-Path>$(SolutionDir)\wineditline-2.206\lib64\</libedit-x64-Path>
     <UseOpenSSL>true</UseOpenSSL>
     <SSLLib>libcrypto.lib;</SSLLib>
     <WindowsSDKVersion>10.0.17763.0</WindowsSDKVersion>
