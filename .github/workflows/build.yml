@@ -37,3 +37,12 @@ jobs:
         ipmo .\contrib\win32\openssh\OpenSSHBuildHelper.psm1 -Force
         Start-OpenSSHBuild -Configuration Release -NativeHostArch x64
 
+    - name: Upload a Build log
+      if: failure()
+      uses: actions/upload-artifact@v3.1.1
+      with:
+        # Artifact name
+        name: OpenSSHReleasex64.log # optional, default is artifact
+        # A file, directory or wildcard pattern that describes what to upload
+        path: ${{ github.workspace }}\contrib\win32\openssh\OpenSSHReleasex64.log
+        # The desired behavior if no files are found using the provided path.
